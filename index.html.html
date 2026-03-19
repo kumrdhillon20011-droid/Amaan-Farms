@@ -1,0 +1,1942 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Amaan Farms — Pure A2 Milk, Amritsar</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet">
+<style>
+/* ================================================================
+   RESET & ROOT
+================================================================ */
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+
+:root {
+  --cream:      #f8f3ea;
+  --cream2:     #f0e8d8;
+  --parchment:  #e8dcc8;
+  --dark:       #141a10;
+  --dark2:      #1e2818;
+  --forest:     #2a4a20;
+  --forest2:    #3a6030;
+  --moss:       #4a7040;
+  --sage:       #7a9a6a;
+  --gold:       #b87820;
+  --gold2:      #d4a040;
+  --gold-light: #f0c860;
+  --text:       #1e2818;
+  --text2:      #4a5a40;
+  --text3:      #7a8a70;
+  --white:      #ffffff;
+  --milk:       #fdfaf3;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Jost', sans-serif;
+  background: var(--cream);
+  color: var(--text);
+  overflow-x: hidden;
+}
+
+/* ================================================================
+   GRAIN OVERLAY
+================================================================ */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 1000;
+  opacity: 0.5;
+}
+
+/* ================================================================
+   NAV
+================================================================ */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 500;
+  padding: 20px 48px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: all 0.4s ease;
+}
+
+nav.scrolled {
+  background: rgba(248,243,234,0.92);
+  backdrop-filter: blur(12px);
+  padding: 14px 48px;
+  border-bottom: 1px solid var(--parchment);
+}
+
+.nav-logo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--dark);
+  text-decoration: none;
+  letter-spacing: 0.5px;
+}
+
+.nav-logo span { color: var(--forest); font-style: italic; }
+
+.nav-links {
+  display: flex;
+  gap: 36px;
+  list-style: none;
+  align-items: center;
+}
+
+.nav-links a {
+  font-size: 13px;
+  font-weight: 300;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--text2);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.nav-links a:hover { color: var(--forest); }
+
+.nav-cta {
+  background: var(--forest);
+  color: #fff !important;
+  padding: 9px 22px;
+  border-radius: 2px;
+  font-size: 12px !important;
+  letter-spacing: 2px !important;
+}
+
+.nav-cta:hover { background: var(--forest2) !important; color: #fff !important; }
+
+/* ================================================================
+   HERO
+================================================================ */
+.hero {
+  position: relative;
+  height: 100vh;
+  min-height: 700px;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    105deg,
+    rgba(20,26,16,0.72) 0%,
+    rgba(20,26,16,0.40) 50%,
+    rgba(20,26,16,0.15) 100%
+  );
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  padding: 0 48px;
+  max-width: 760px;
+  animation: heroIn 1.2s ease both;
+}
+
+@keyframes heroIn {
+  from { opacity:0; transform: translateY(30px); }
+  to   { opacity:1; transform: translateY(0); }
+}
+
+.hero-eyebrow {
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--gold-light);
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.hero-eyebrow::before {
+  content: '';
+  width: 40px;
+  height: 1px;
+  background: var(--gold-light);
+}
+
+.hero h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(52px, 7vw, 90px);
+  font-weight: 300;
+  color: #fff;
+  line-height: 1.05;
+  margin-bottom: 24px;
+}
+
+.hero h1 em {
+  font-style: italic;
+  color: var(--gold-light);
+}
+
+.hero-desc {
+  font-size: 15px;
+  font-weight: 300;
+  color: rgba(255,255,255,0.75);
+  line-height: 1.8;
+  max-width: 480px;
+  margin-bottom: 40px;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.btn-hero-primary {
+  background: var(--gold2);
+  color: var(--dark);
+  padding: 14px 32px;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  text-decoration: none;
+  border-radius: 2px;
+  transition: all 0.25s;
+  font-family: 'Jost', sans-serif;
+}
+
+.btn-hero-primary:hover { background: var(--gold-light); transform: translateY(-1px); }
+
+.btn-hero-ghost {
+  color: rgba(255,255,255,0.8);
+  font-size: 12px;
+  font-weight: 300;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(255,255,255,0.3);
+  padding-bottom: 2px;
+  transition: all 0.2s;
+}
+
+.btn-hero-ghost:hover { color: #fff; border-color: #fff; }
+
+.hero-scroll {
+  position: absolute;
+  bottom: 36px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  color: rgba(255,255,255,0.4);
+  font-size: 10px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  animation: scrollBounce 2s infinite;
+}
+
+@keyframes scrollBounce {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50%       { transform: translateX(-50%) translateY(6px); }
+}
+
+.scroll-line {
+  width: 1px;
+  height: 40px;
+  background: linear-gradient(to bottom, rgba(255,255,255,0.4), transparent);
+}
+
+/* ================================================================
+   INTRO STRIP
+================================================================ */
+.intro-strip {
+  background: var(--dark);
+  padding: 28px 48px;
+  display: flex;
+  justify-content: center;
+  gap: 60px;
+  flex-wrap: wrap;
+}
+
+.intro-stat {
+  text-align: center;
+  color: rgba(255,255,255,0.6);
+}
+
+.intro-stat strong {
+  display: block;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 30px;
+  font-weight: 300;
+  color: var(--gold-light);
+  line-height: 1;
+  margin-bottom: 4px;
+}
+
+.intro-stat span {
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+/* ================================================================
+   SECTION COMMONS
+================================================================ */
+section { padding: 100px 48px; }
+
+.section-eyebrow {
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--sage);
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.section-eyebrow::before {
+  content: '';
+  width: 28px; height: 1px;
+  background: var(--sage);
+}
+
+.section-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(36px, 4.5vw, 58px);
+  font-weight: 300;
+  line-height: 1.12;
+  color: var(--dark);
+}
+
+.section-title em { font-style: italic; color: var(--forest); }
+
+/* ================================================================
+   ABOUT / VALUES
+================================================================ */
+.about {
+  background: var(--milk);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  padding: 0;
+}
+
+.about-text {
+  padding: 100px 64px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.about-body {
+  font-size: 15.5px;
+  font-weight: 300;
+  line-height: 1.85;
+  color: var(--text2);
+  margin-top: 28px;
+  max-width: 480px;
+}
+
+.about-body p + p { margin-top: 18px; }
+
+.about-image {
+  position: relative;
+  overflow: hidden;
+  min-height: 600px;
+}
+
+.about-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 6s ease;
+}
+
+.about-illus {
+  width: 100%;
+  height: 100%;
+  min-height: 600px;
+  display: block;
+  overflow: hidden;
+}
+
+.about-image:hover img { transform: scale(1.04); }
+
+.about-image-caption {
+  position: absolute;
+  bottom: 24px;
+  left: 24px;
+  right: 24px;
+  background: rgba(20,26,16,0.7);
+  backdrop-filter: blur(8px);
+  color: rgba(255,255,255,0.8);
+  font-size: 12px;
+  letter-spacing: 1px;
+  padding: 12px 16px;
+  border-radius: 2px;
+  font-weight: 300;
+}
+
+/* ================================================================
+   VALUES / PILLARS
+================================================================ */
+.values {
+  background: var(--cream);
+  text-align: center;
+  padding: 100px 48px;
+}
+
+.values .section-eyebrow { justify-content: center; }
+.values .section-eyebrow::before { display: none; }
+
+.values-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 2px;
+  margin-top: 60px;
+  background: var(--parchment);
+}
+
+.value-card {
+  background: var(--cream);
+  padding: 48px 32px;
+  text-align: center;
+  transition: background 0.3s;
+}
+
+.value-card:hover { background: var(--milk); }
+
+.value-icon {
+  font-size: 36px;
+  margin-bottom: 20px;
+  display: block;
+}
+
+.value-card h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 22px;
+  font-weight: 400;
+  color: var(--dark);
+  margin-bottom: 12px;
+}
+
+.value-card p {
+  font-size: 13.5px;
+  font-weight: 300;
+  color: var(--text3);
+  line-height: 1.7;
+}
+
+/* ================================================================
+   MORNING SECTION — full bleed image with text
+================================================================ */
+.morning {
+  position: relative;
+  padding: 0;
+  height: 80vh;
+  min-height: 560px;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+.morning-bg {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.morning-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to right, rgba(20,26,16,0.85) 0%, rgba(20,26,16,0.3) 60%, transparent 100%);
+}
+
+.morning-content {
+  position: relative;
+  z-index: 2;
+  padding: 0 80px;
+  max-width: 640px;
+}
+
+.morning-content .section-eyebrow { color: var(--gold-light); }
+.morning-content .section-eyebrow::before { background: var(--gold-light); }
+.morning-content .section-title { color: #fff; }
+
+.morning-body {
+  margin-top: 24px;
+  font-size: 15px;
+  font-weight: 300;
+  color: rgba(255,255,255,0.7);
+  line-height: 1.8;
+  max-width: 440px;
+}
+
+/* ================================================================
+   HOW IT WORKS
+================================================================ */
+.how {
+  background: var(--dark2);
+  padding: 100px 48px;
+}
+
+.how .section-eyebrow { color: var(--gold-light); }
+.how .section-eyebrow::before { background: var(--gold-light); }
+.how .section-title { color: #fff; }
+
+.steps-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2px;
+  margin-top: 60px;
+  background: rgba(255,255,255,0.04);
+}
+
+.step {
+  padding: 44px 32px;
+  background: var(--dark2);
+  position: relative;
+  transition: background 0.3s;
+}
+
+.step:hover { background: rgba(255,255,255,0.03); }
+
+.step-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 60px;
+  font-weight: 300;
+  color: rgba(255,255,255,0.06);
+  line-height: 1;
+  margin-bottom: 16px;
+}
+
+.step-icon { font-size: 28px; margin-bottom: 16px; display: block; }
+
+.step h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 20px;
+  font-weight: 400;
+  color: #fff;
+  margin-bottom: 10px;
+}
+
+.step p {
+  font-size: 13px;
+  font-weight: 300;
+  color: rgba(255,255,255,0.45);
+  line-height: 1.7;
+}
+
+/* ================================================================
+   HEALTH SECTION — image mosaic
+================================================================ */
+.health {
+  background: var(--milk);
+  padding: 100px 48px;
+}
+
+.health-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.health-images {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 220px 220px;
+  gap: 10px;
+}
+
+.health-img {
+  overflow: hidden;
+  border-radius: 2px;
+}
+
+.health-img:first-child {
+  grid-row: 1 / 3;
+}
+
+.health-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 5s ease;
+}
+
+.health-img:hover img { transform: scale(1.06); }
+
+.health-illus {
+  width: 100%;
+  height: 100%;
+  display: block;
+  overflow: hidden;
+}
+
+.health-text { padding: 20px 0; }
+
+.health-points {
+  margin-top: 36px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.health-point {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+.hp-icon {
+  width: 40px; height: 40px;
+  border-radius: 50%;
+  background: var(--green-bg, rgba(42,74,32,0.08));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  flex-shrink: 0;
+  border: 1px solid rgba(42,74,32,0.12);
+}
+
+.hp-body h4 {
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--dark);
+  margin-bottom: 3px;
+}
+
+.hp-body p {
+  font-size: 13px;
+  font-weight: 300;
+  color: var(--text3);
+  line-height: 1.6;
+}
+
+/* ================================================================
+   QUOTE BREAK
+================================================================ */
+.quote-section {
+  background: var(--forest);
+  padding: 80px 48px;
+  text-align: center;
+}
+
+.quote-mark {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 80px;
+  line-height: 0.5;
+  color: rgba(255,255,255,0.15);
+  margin-bottom: 20px;
+}
+
+.quote-text {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(24px, 3.5vw, 40px);
+  font-weight: 300;
+  font-style: italic;
+  color: rgba(255,255,255,0.9);
+  line-height: 1.4;
+  max-width: 780px;
+  margin: 0 auto 20px;
+}
+
+.quote-attr {
+  font-size: 11px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--gold-light);
+  font-weight: 300;
+}
+
+/* ================================================================
+   AUTH + MESSAGE SECTION
+================================================================ */
+.connect {
+  background: var(--cream2);
+  padding: 100px 48px;
+}
+
+.connect-inner {
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+.connect .section-eyebrow { justify-content: center; }
+.connect .section-eyebrow::before { display: none; }
+.connect .section-title { text-align: center; }
+
+.connect-subtitle {
+  text-align: center;
+  font-size: 15px;
+  font-weight: 300;
+  color: var(--text3);
+  line-height: 1.7;
+  margin-top: 16px;
+  margin-bottom: 48px;
+}
+
+/* AUTH FORM */
+.auth-box {
+  background: var(--milk);
+  border: 1px solid var(--parchment);
+  border-radius: 4px;
+  padding: 40px;
+  box-shadow: 0 8px 40px rgba(20,26,16,0.06);
+}
+
+.auth-tabs {
+  display: flex;
+  border-bottom: 1px solid var(--parchment);
+  margin-bottom: 32px;
+  gap: 0;
+}
+
+.auth-tab {
+  flex: 1;
+  padding: 12px;
+  text-align: center;
+  font-size: 12px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--text3);
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  transition: all 0.2s;
+  font-weight: 400;
+}
+
+.auth-tab.active {
+  color: var(--forest);
+  border-bottom-color: var(--forest);
+}
+
+.auth-form { display: none; }
+.auth-form.active { display: block; }
+
+.form-group {
+  margin-bottom: 18px;
+}
+
+.form-group label {
+  display: block;
+  font-size: 11px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--text3);
+  margin-bottom: 7px;
+  font-weight: 400;
+}
+
+.form-input {
+  width: 100%;
+  background: var(--cream);
+  border: 1px solid var(--parchment);
+  border-radius: 2px;
+  padding: 12px 16px;
+  font-size: 14px;
+  font-weight: 300;
+  color: var(--text);
+  font-family: 'Jost', sans-serif;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.form-input:focus { border-color: var(--forest); background: #fff; }
+.form-input::placeholder { color: var(--text3); }
+
+.form-row-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+
+.btn-form {
+  width: 100%;
+  background: var(--forest);
+  color: #fff;
+  border: none;
+  padding: 14px;
+  font-size: 12px;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  font-family: 'Jost', sans-serif;
+  font-weight: 500;
+  cursor: pointer;
+  border-radius: 2px;
+  transition: all 0.2s;
+  margin-top: 8px;
+}
+
+.btn-form:hover { background: var(--forest2); }
+
+.auth-note {
+  text-align: center;
+  font-size: 12px;
+  font-weight: 300;
+  color: var(--text3);
+  margin-top: 16px;
+}
+
+.auth-note a {
+  color: var(--forest);
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+/* MESSAGING UI */
+.message-box { display: none; }
+.message-box.active { display: block; }
+
+.msg-user-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--forest);
+  color: #fff;
+  padding: 14px 20px;
+  border-radius: 4px 4px 0 0;
+}
+
+.msg-user-name {
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: 1px;
+}
+
+.msg-user-name span {
+  font-size: 11px;
+  opacity: 0.6;
+  display: block;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-weight: 300;
+}
+
+.btn-signout {
+  background: rgba(255,255,255,0.12);
+  border: none;
+  color: rgba(255,255,255,0.7);
+  padding: 6px 14px;
+  font-size: 11px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  cursor: pointer;
+  border-radius: 2px;
+  font-family: 'Jost', sans-serif;
+  transition: all 0.2s;
+}
+
+.btn-signout:hover { background: rgba(255,255,255,0.2); color: #fff; }
+
+.messages-window {
+  background: var(--milk);
+  border: 1px solid var(--parchment);
+  border-top: none;
+  min-height: 280px;
+  max-height: 380px;
+  overflow-y: auto;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.msg-bubble {
+  max-width: 80%;
+  padding: 12px 16px;
+  border-radius: 2px;
+  font-size: 13.5px;
+  font-weight: 300;
+  line-height: 1.6;
+}
+
+.msg-bubble.sent {
+  background: var(--forest);
+  color: rgba(255,255,255,0.9);
+  align-self: flex-end;
+  border-radius: 4px 4px 0 4px;
+}
+
+.msg-bubble.received {
+  background: var(--cream2);
+  color: var(--text);
+  align-self: flex-start;
+  border-radius: 4px 4px 4px 0;
+  border: 1px solid var(--parchment);
+}
+
+.msg-meta {
+  font-size: 10px;
+  opacity: 0.5;
+  margin-top: 4px;
+  letter-spacing: 0.5px;
+}
+
+.msg-empty {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: var(--text3);
+  font-size: 13px;
+  font-weight: 300;
+  text-align: center;
+  gap: 8px;
+  padding: 40px;
+}
+
+.msg-empty-icon { font-size: 32px; opacity: 0.4; }
+
+.msg-input-area {
+  background: var(--milk);
+  border: 1px solid var(--parchment);
+  border-top: 1px solid var(--cream2);
+  border-radius: 0 0 4px 4px;
+  padding: 16px;
+  display: flex;
+  gap: 10px;
+  align-items: flex-end;
+}
+
+.msg-input {
+  flex: 1;
+  background: var(--cream);
+  border: 1px solid var(--parchment);
+  border-radius: 2px;
+  padding: 10px 14px;
+  font-size: 14px;
+  font-weight: 300;
+  color: var(--text);
+  font-family: 'Jost', sans-serif;
+  outline: none;
+  resize: none;
+  min-height: 42px;
+  max-height: 100px;
+  line-height: 1.5;
+  transition: border-color 0.2s;
+}
+
+.msg-input:focus { border-color: var(--forest); }
+.msg-input::placeholder { color: var(--text3); }
+
+.btn-send {
+  background: var(--gold2);
+  border: none;
+  padding: 10px 20px;
+  color: var(--dark);
+  font-size: 12px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  font-family: 'Jost', sans-serif;
+  font-weight: 500;
+  cursor: pointer;
+  border-radius: 2px;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+
+.btn-send:hover { background: var(--gold-light); }
+
+/* ================================================================
+   FOOTER
+================================================================ */
+footer {
+  background: var(--dark);
+  padding: 64px 48px 40px;
+  color: rgba(255,255,255,0.5);
+}
+
+.footer-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 60px;
+  margin-bottom: 48px;
+}
+
+.footer-brand .logo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 24px;
+  font-weight: 400;
+  color: #fff;
+  margin-bottom: 14px;
+}
+
+.footer-brand .logo em { font-style: italic; color: var(--gold-light); }
+
+.footer-brand p {
+  font-size: 13px;
+  font-weight: 300;
+  line-height: 1.7;
+  max-width: 280px;
+}
+
+.footer-col h4 {
+  font-size: 11px;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.3);
+  margin-bottom: 16px;
+  font-weight: 400;
+}
+
+.footer-col ul { list-style: none; }
+.footer-col ul li { margin-bottom: 10px; }
+.footer-col ul a {
+  color: rgba(255,255,255,0.5);
+  text-decoration: none;
+  font-size: 13.5px;
+  font-weight: 300;
+  transition: color 0.2s;
+}
+.footer-col ul a:hover { color: rgba(255,255,255,0.85); }
+
+.footer-bottom {
+  border-top: 1px solid rgba(255,255,255,0.06);
+  padding-top: 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12px;
+  font-weight: 300;
+  letter-spacing: 0.5px;
+}
+
+.footer-badge {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--gold-light);
+}
+
+/* ================================================================
+   ANIMATIONS
+================================================================ */
+.fade-in {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ================================================================
+   RESPONSIVE
+================================================================ */
+@media (max-width: 900px) {
+  nav { padding: 18px 24px; }
+  nav.scrolled { padding: 12px 24px; }
+  .nav-links { gap: 20px; }
+  section { padding: 70px 24px; }
+  .hero-content { padding: 0 24px; }
+  .about { grid-template-columns: 1fr; }
+  .about-image { min-height: 320px; }
+  .about-text { padding: 60px 32px; }
+  .health-inner { grid-template-columns: 1fr; }
+  .health-images { order: -1; }
+  .morning-content { padding: 0 32px; }
+  .footer-inner { grid-template-columns: 1fr; gap: 36px; }
+  .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
+  .form-row-2 { grid-template-columns: 1fr; }
+  .connect { padding: 70px 24px; }
+  .auth-box { padding: 28px 20px; }
+}
+
+@media (max-width: 640px) {
+  .nav-links { display: none; }
+  .hero h1 { font-size: 46px; }
+  .intro-strip { gap: 32px; }
+  .values-grid { grid-template-columns: 1fr; }
+  .steps-grid { grid-template-columns: 1fr; }
+  .health-images { grid-template-columns: 1fr; grid-template-rows: auto; }
+  .health-img:first-child { grid-row: auto; }
+}
+
+/* scrollbar */
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--parchment); border-radius: 3px; }
+</style>
+</head>
+<body>
+
+<!-- ============================================================
+  NAV
+============================================================ -->
+<nav id="main-nav">
+  <a href="#" class="nav-logo">Amaan <span>Farms</span></a>
+  <ul class="nav-links">
+    <li><a href="#about">Our Story</a></li>
+    <li><a href="#values">Values</a></li>
+    <li><a href="#health">A2 Milk</a></li>
+    <li><a href="#connect" class="nav-cta">Get in Touch</a></li>
+  </ul>
+</nav>
+
+<!-- ============================================================
+  HERO
+============================================================ -->
+<section class="hero" id="home">
+  <div class="hero-bg">
+    <svg viewBox="0 0 1200 700" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" preserveAspectRatio="xMidYMid slice" style="position:absolute;inset:0;">
+      <!-- Deep sky -->
+      <rect width="1200" height="700" fill="#0b1507"/>
+      <!-- Dawn glow on right horizon -->
+      <ellipse cx="950" cy="400" rx="380" ry="280" fill="#b87820" opacity="0.18"/>
+      <ellipse cx="950" cy="420" rx="240" ry="180" fill="#d4a040" opacity="0.15"/>
+      <ellipse cx="950" cy="435" rx="140" ry="100" fill="#f0c060" opacity="0.12"/>
+      <!-- Stars -->
+      <circle cx="100" cy="80" r="1.5" fill="#fff" opacity="0.55"/>
+      <circle cx="220" cy="50" r="1" fill="#fff" opacity="0.45"/>
+      <circle cx="350" cy="100" r="1.2" fill="#fff" opacity="0.4"/>
+      <circle cx="480" cy="60" r="0.9" fill="#fff" opacity="0.35"/>
+      <circle cx="60" cy="160" r="1" fill="#fff" opacity="0.38"/>
+      <circle cx="180" cy="140" r="0.8" fill="#fff" opacity="0.3"/>
+      <circle cx="600" cy="40" r="1.1" fill="#fff" opacity="0.42"/>
+      <circle cx="720" cy="90" r="0.9" fill="#fff" opacity="0.32"/>
+      <!-- Far hills silhouette -->
+      <path d="M0 420 Q200 360 380 385 Q560 350 760 370 Q920 345 1100 365 Q1150 358 1200 362 L1200 700 L0 700Z" fill="#162810" opacity="0.95"/>
+      <!-- Mid field -->
+      <path d="M0 460 Q150 440 300 450 Q500 432 700 448 Q900 435 1100 445 Q1150 440 1200 444 L1200 700 L0 700Z" fill="#1e3c14"/>
+      <!-- Foreground crop field -->
+      <path d="M0 510 Q200 495 400 505 Q650 490 900 502 Q1100 492 1200 498 L1200 700 L0 700Z" fill="#264818"/>
+      <path d="M0 555 L1200 555 L1200 700 L0 700Z" fill="#1a3410"/>
+      <!-- Crop rows -->
+      <line x1="0" y1="528" x2="1200" y2="526" stroke="#2e5018" stroke-width="2" opacity="0.55"/>
+      <line x1="0" y1="543" x2="1200" y2="541" stroke="#264010" stroke-width="1.5" opacity="0.45"/>
+      <line x1="0" y1="557" x2="1200" y2="555" stroke="#1e3810" stroke-width="2" opacity="0.4"/>
+      <line x1="0" y1="570" x2="1200" y2="568" stroke="#182e0c" stroke-width="1.5" opacity="0.35"/>
+      <line x1="0" y1="582" x2="1200" y2="580" stroke="#142808" stroke-width="1.5" opacity="0.3"/>
+      <!-- Tree cluster left -->
+      <rect x="80" y="388" width="8" height="120" fill="#0a1005"/>
+      <ellipse cx="84" cy="378" rx="30" ry="42" fill="#0e1a07"/>
+      <rect x="140" y="400" width="6" height="108" fill="#0a1005"/>
+      <ellipse cx="143" cy="390" rx="22" ry="32" fill="#0e1a07"/>
+      <!-- Tree cluster right -->
+      <rect x="1060" y="382" width="8" height="126" fill="#0a1005"/>
+      <ellipse cx="1064" cy="370" rx="32" ry="44" fill="#0e1a07"/>
+      <rect x="1110" y="398" width="6" height="110" fill="#0a1005"/>
+      <ellipse cx="1113" cy="386" rx="24" ry="34" fill="#0e1a07"/>
+      <!-- Cow silhouettes in field — desi breed with hump -->
+      <path d="M440 480 Q446 458 462 454 Q480 450 492 454 Q502 448 514 451 Q524 447 528 456 Q534 453 538 460 Q541 467 537 473 Q543 476 542 483 Q537 488 526 485 L523 498 L515 498 L513 485 Q500 487 486 485 L484 498 L476 498 L474 485 Q462 487 453 484 L450 498 L443 498 L440 484 Q436 481 439 476 Q438 482 440 480Z" fill="#0e1407" opacity="0.9"/>
+      <ellipse cx="540" cy="464" rx="16" ry="13" fill="#0e1407" opacity="0.9"/>
+      <path d="M545 454 Q556 440 551 435" fill="none" stroke="#0e1407" stroke-width="2.5" stroke-linecap="round"/>
+      <!-- Second cow farther right -->
+      <path d="M680 490 Q684 474 696 471 Q708 468 716 472 Q723 467 731 469 Q738 466 740 473 Q744 471 747 477 Q749 482 746 486 Q750 488 750 494 L746 503 L740 503 L738 493 Q730 495 720 493 L718 503 L712 503 L710 493 Q702 495 695 492 L693 503 L687 503 L685 492 Q682 490 684 486 L680 490Z" fill="#0e1407" opacity="0.85"/>
+      <!-- Mist layer -->
+      <rect x="0" y="495" width="1200" height="28" fill="#1a3010" opacity="0.35"/>
+      <!-- Golden horizon line -->
+      <rect x="700" y="418" width="500" height="4" fill="#c89830" opacity="0.08"/>
+    </svg>
+  </div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">Amritsar · Since 2026</div>
+    <h1>Milk the way<br>nature <em>intended.</em></h1>
+    <p class="hero-desc">
+      From our desi cows to your doorstep — pure A2 milk, harvested at dawn, delivered fresh. No additives. No mystery. Just honest milk from animals we know by name.
+    </p>
+    <div class="hero-actions">
+      <a href="#connect" class="btn-hero-primary">Get Fresh Milk</a>
+      <a href="#about" class="btn-hero-ghost">Our Story →</a>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <div class="scroll-line"></div>
+    Scroll
+  </div>
+</section>
+
+<!-- ============================================================
+  INTRO STRIP
+============================================================ -->
+<div class="intro-strip">
+  <div class="intro-stat">
+    <strong>A2</strong>
+    <span>Pure Protein</span>
+  </div>
+  <div class="intro-stat">
+    <strong>5am</strong>
+    <span>Every Morning</span>
+  </div>
+  <div class="intro-stat">
+    <strong>0</strong>
+    <span>Adulterants</span>
+  </div>
+  <div class="intro-stat">
+    <strong>∞</strong>
+    <span>Transparency</span>
+  </div>
+</div>
+
+<!-- ============================================================
+  ABOUT
+============================================================ -->
+<div class="about" id="about">
+  <div class="about-text fade-in">
+    <div class="section-eyebrow">Our Story</div>
+    <h2 class="section-title">Built on a belief<br>in <em>real food.</em></h2>
+    <div class="about-body">
+      <p>We started Amaan Farms because we couldn't find milk we truly trusted — for ourselves, for our children, for the people we love. The kind of milk our grandparents drank: from animals they knew, on land they could see, without the industrial chain in between.</p>
+      <p>Our farm sits near Amritsar International Airport, home to indigenous desi breeds whose A2 milk has nourished Indian families for centuries. We milk at dawn. We bottle by hand. We deliver before the city wakes up.</p>
+      <p>We believe that what you eat is a statement about what you value. We built Amaan Farms for people who take that seriously.</p>
+    </div>
+  </div>
+  <div class="about-image fade-in">
+    <div class="about-illus">
+      <svg viewBox="0 0 500 600" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" preserveAspectRatio="xMidYMid slice">
+        <!-- Sky gradient layers -->
+        <rect x="0" y="0" width="500" height="600" fill="#0e1c08"/>
+        <!-- Dawn sky -->
+        <ellipse cx="380" cy="180" rx="220" ry="160" fill="#b87820" opacity="0.22"/>
+        <ellipse cx="380" cy="200" rx="160" ry="110" fill="#d4a040" opacity="0.18"/>
+        <ellipse cx="380" cy="210" rx="90" ry="60" fill="#f0c060" opacity="0.14"/>
+        <!-- Stars -->
+        <circle cx="80" cy="60" r="1.2" fill="#fff" opacity="0.5"/>
+        <circle cx="160" cy="40" r="0.8" fill="#fff" opacity="0.4"/>
+        <circle cx="240" cy="80" r="1" fill="#fff" opacity="0.35"/>
+        <circle cx="50" cy="120" r="0.8" fill="#fff" opacity="0.3"/>
+        <circle cx="300" cy="50" r="1.2" fill="#fff" opacity="0.45"/>
+        <circle cx="130" cy="100" r="0.7" fill="#fff" opacity="0.3"/>
+        <!-- Far hills -->
+        <path d="M0 340 Q80 290 160 310 Q240 280 320 300 Q400 270 500 295 L500 600 L0 600Z" fill="#1a3010" opacity="0.9"/>
+        <!-- Mid field -->
+        <path d="M0 370 Q100 345 200 360 Q300 340 400 358 Q460 350 500 360 L500 600 L0 600Z" fill="#224018"/>
+        <!-- Foreground field rows — suggesting Punjab mustard/wheat -->
+        <path d="M0 420 Q120 405 250 415 Q380 405 500 418 L500 600 L0 600Z" fill="#2a5020"/>
+        <path d="M0 460 L500 460 L500 600 L0 600Z" fill="#1e3c14"/>
+        <!-- Field texture lines — crop rows -->
+        <line x1="0" y1="440" x2="500" y2="438" stroke="#305018" stroke-width="1.5" opacity="0.6"/>
+        <line x1="0" y1="455" x2="500" y2="453" stroke="#305018" stroke-width="1" opacity="0.5"/>
+        <line x1="0" y1="468" x2="500" y2="467" stroke="#264010" stroke-width="1.5" opacity="0.5"/>
+        <line x1="0" y1="480" x2="500" y2="479" stroke="#264010" stroke-width="1" opacity="0.4"/>
+        <line x1="0" y1="492" x2="500" y2="491" stroke="#1e3010" stroke-width="1.5" opacity="0.4"/>
+        <!-- Tree silhouettes — left -->
+        <rect x="48" y="300" width="6" height="90" fill="#0e1c08"/>
+        <ellipse cx="51" cy="295" rx="20" ry="30" fill="#142408"/>
+        <rect x="90" y="310" width="5" height="80" fill="#0e1c08"/>
+        <ellipse cx="92" cy="305" rx="16" ry="24" fill="#142408"/>
+        <!-- Tree silhouettes — right -->
+        <rect x="420" y="295" width="6" height="95" fill="#0e1c08"/>
+        <ellipse cx="423" cy="288" rx="22" ry="32" fill="#122208"/>
+        <rect x="458" y="308" width="5" height="82" fill="#0e1c08"/>
+        <ellipse cx="460" cy="302" rx="17" ry="25" fill="#122208"/>
+        <!-- Cow silhouette — desi breed with hump -->
+        <path d="M195 385 Q200 368 215 365 Q230 362 240 365 Q248 363 255 368 Q262 360 270 362 Q278 360 280 368 Q284 366 288 370 Q290 375 288 380 Q292 382 292 388 Q288 392 280 390 L278 400 L272 400 L270 390 Q260 392 250 390 L248 400 L242 400 L240 390 Q230 392 218 390 L215 400 L210 400 L208 388 Q202 387 200 382 Q196 390 195 385Z" fill="#1a1008"/>
+        <!-- Cow head -->
+        <ellipse cx="293" cy="373" rx="10" ry="8" fill="#1e1408"/>
+        <!-- Cow horn -->
+        <path d="M296 367 Q302 360 299 357" fill="none" stroke="#1e1408" stroke-width="1.5" stroke-linecap="round"/>
+        <!-- Second cow — smaller, further -->
+        <path d="M130 395 Q134 383 144 381 Q155 379 162 382 Q168 378 174 380 Q178 383 176 387 Q180 388 180 393 L178 400 L172 400 L170 393 Q162 394 154 393 L152 400 L146 400 L144 393 Q138 393 136 389 L130 395Z" fill="#1a1008"/>
+        <!-- Fog layer -->
+        <rect x="0" y="395" width="500" height="30" fill="#1e3010" opacity="0.4"/>
+        <!-- Golden sunrise glow on horizon -->
+        <rect x="0" y="330" width="500" height="8" fill="#c89830" opacity="0.06"/>
+        <rect x="280" y="325" width="220" height="12" fill="#d4a840" opacity="0.10"/>
+      </svg>
+    </div>
+    <div class="about-image-caption">Our farm at dawn — Amritsar, Punjab</div>
+  </div>
+</div>
+
+<!-- ============================================================
+  VALUES
+============================================================ -->
+<section class="values" id="values">
+  <div class="section-eyebrow">What We Stand For</div>
+  <h2 class="section-title">Conscious eating<br>starts <em>here.</em></h2>
+
+  <div class="values-grid">
+    <div class="value-card fade-in">
+      <span class="value-icon">🐄</span>
+      <h3>Radical Traceability</h3>
+      <p>You know which farm this came from. Which cows. Which morning. No other brand can say that. We don't hide behind packaging — we invite you to see everything.</p>
+    </div>
+    <div class="value-card fade-in" style="transition-delay:0.1s">
+      <span class="value-icon">🌱</span>
+      <h3>No Shortcuts</h3>
+      <p>No hormones. No adulteration. No cold-storage chains stretching days. What leaves our farm is exactly what arrives at your door — pure, fresh, and honest.</p>
+    </div>
+    <div class="value-card fade-in" style="transition-delay:0.2s">
+      <span class="value-icon">💛</span>
+      <h3>Desi Breeds, Desi Wisdom</h3>
+      <p>A2 milk comes from indigenous Indian breeds whose genetics have remained unchanged for thousands of years. This isn't a trend — it's a return to what was always right.</p>
+    </div>
+    <div class="value-card fade-in" style="transition-delay:0.3s">
+      <span class="value-icon">🏡</span>
+      <h3>Local & Personal</h3>
+      <p>We're your neighbours. Not a corporation. Every order is personal to us. When you message us, a real person reads it. When something goes wrong, we fix it — personally.</p>
+    </div>
+    <div class="value-card fade-in" style="transition-delay:0.4s">
+      <span class="value-icon">✨</span>
+      <h3>Conscious Living</h3>
+      <p>We believe your food choices reflect your values. Choosing Amaan Farms is choosing to know where your food comes from — and to demand better from the systems that feed us.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+  MORNING SECTION
+============================================================ -->
+<div class="morning">
+  <div class="morning-bg">
+    <svg viewBox="0 0 1200 560" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" preserveAspectRatio="xMidYMid slice" style="position:absolute;inset:0;">
+      <!-- Pre-dawn deep sky -->
+      <rect width="1200" height="560" fill="#091205"/>
+      <!-- Milky way band suggestion -->
+      <ellipse cx="600" cy="140" rx="600" ry="120" fill="#0e1c08" opacity="0.8"/>
+      <!-- Golden pre-dawn glow — right -->
+      <ellipse cx="1050" cy="340" rx="320" ry="240" fill="#c89030" opacity="0.22"/>
+      <ellipse cx="1050" cy="360" rx="200" ry="155" fill="#d4a840" opacity="0.18"/>
+      <ellipse cx="1050" cy="375" rx="110" ry="85" fill="#e8bc50" opacity="0.15"/>
+      <!-- Stars scattered -->
+      <circle cx="80" cy="50" r="1.4" fill="#fff" opacity="0.6"/>
+      <circle cx="170" cy="30" r="1" fill="#fff" opacity="0.5"/>
+      <circle cx="280" cy="70" r="1.2" fill="#fff" opacity="0.45"/>
+      <circle cx="410" cy="25" r="0.9" fill="#fff" opacity="0.4"/>
+      <circle cx="520" cy="55" r="1.1" fill="#fff" opacity="0.42"/>
+      <circle cx="640" cy="35" r="0.8" fill="#fff" opacity="0.38"/>
+      <circle cx="50" cy="110" r="0.9" fill="#fff" opacity="0.35"/>
+      <circle cx="200" cy="95" r="1" fill="#fff" opacity="0.32"/>
+      <circle cx="350" cy="110" r="0.7" fill="#fff" opacity="0.3"/>
+      <circle cx="150" cy="160" r="0.8" fill="#fff" opacity="0.28"/>
+      <!-- Crescent moon -->
+      <circle cx="200" cy="80" r="18" fill="#1a2c10"/>
+      <circle cx="208" cy="74" r="14" fill="#091205"/>
+      <!-- Far horizon hills -->
+      <path d="M0 350 Q180 300 360 325 Q540 295 720 315 Q900 290 1080 308 Q1140 300 1200 304 L1200 560 L0 560Z" fill="#112008" opacity="0.95"/>
+      <!-- Mid ground — flat Punjab fields -->
+      <path d="M0 390 Q200 368 400 380 Q600 362 800 374 Q1000 360 1200 370 L1200 560 L0 560Z" fill="#1a3410"/>
+      <!-- Foreground crop field -->
+      <path d="M0 430 Q300 415 600 424 Q900 412 1200 420 L1200 560 L0 560Z" fill="#224018"/>
+      <path d="M0 470 L1200 470 L1200 560 L0 560Z" fill="#1a3010"/>
+      <!-- Crop row lines — Punjab wheat/mustard feel -->
+      <line x1="0" y1="445" x2="1200" y2="443" stroke="#2a5018" stroke-width="1.5" opacity="0.6"/>
+      <line x1="0" y1="458" x2="1200" y2="456" stroke="#224010" stroke-width="1.2" opacity="0.5"/>
+      <line x1="0" y1="470" x2="1200" y2="468" stroke="#1c3808" stroke-width="1.5" opacity="0.45"/>
+      <line x1="0" y1="482" x2="1200" y2="480" stroke="#162e06" stroke-width="1.2" opacity="0.4"/>
+      <line x1="0" y1="493" x2="1200" y2="491" stroke="#122808" stroke-width="1.5" opacity="0.35"/>
+      <!-- Tree silhouettes left cluster -->
+      <rect x="55" y="330" width="7" height="110" fill="#070d04"/>
+      <ellipse cx="58" cy="318" rx="26" ry="36" fill="#0a1206"/>
+      <rect x="105" y="345" width="6" height="95" fill="#070d04"/>
+      <ellipse cx="108" cy="334" rx="20" ry="28" fill="#0a1206"/>
+      <rect x="148" y="355" width="5" height="85" fill="#070d04"/>
+      <ellipse cx="150" cy="345" rx="16" ry="22" fill="#091005"/>
+      <!-- Tree silhouettes right cluster -->
+      <rect x="1020" y="325" width="8" height="115" fill="#070d04"/>
+      <ellipse cx="1024" cy="312" rx="28" ry="38" fill="#0a1206"/>
+      <rect x="1070" y="340" width="6" height="100" fill="#070d04"/>
+      <ellipse cx="1073" cy="328" rx="22" ry="30" fill="#0a1206"/>
+      <!-- Desi cow silhouette — walking, with hump pronounced -->
+      <path d="M520 415 Q526 395 544 390 Q564 386 578 390 Q590 384 602 387 Q614 382 618 392 Q624 389 628 397 Q632 404 628 411 Q634 413 633 421 Q628 427 616 423 L613 438 L605 438 L602 423 Q588 426 572 423 L570 438 L562 438 L559 423 Q546 426 536 422 L534 438 L526 438 L524 421 Q519 418 522 412 Q519 420 520 415Z" fill="#0a1007" opacity="0.95"/>
+      <ellipse cx="630" cy="399" rx="14" ry="12" fill="#0a1007" opacity="0.95"/>
+      <path d="M636 390 Q646 377 641 372" fill="none" stroke="#0a1007" stroke-width="2.5" stroke-linecap="round"/>
+      <path d="M519 418 Q508 423 506 434" fill="none" stroke="#0a1007" stroke-width="2" stroke-linecap="round"/>
+      <!-- Second cow smaller farther -->
+      <path d="M740 425 Q745 409 758 406 Q772 403 781 407 Q789 402 797 405 Q804 402 807 409 Q811 407 814 413 Q816 418 813 423 Q817 425 816 431 L812 440 L806 440 L804 431 Q795 433 784 431 L782 440 L775 440 L773 431 Q763 433 756 430 L754 440 L748 440 L746 430 Q743 428 745 423 L740 425Z" fill="#0a1007" opacity="0.88"/>
+      <ellipse cx="815" cy="415" rx="11" ry="10" fill="#0a1007" opacity="0.88"/>
+      <!-- Mist bank in fields -->
+      <rect x="0" y="428" width="1200" height="22" fill="#1e3810" opacity="0.4"/>
+      <!-- Lantern / light glow suggestion — farm light in distance -->
+      <ellipse cx="880" cy="378" rx="18" ry="12" fill="#c89030" opacity="0.18"/>
+      <ellipse cx="880" cy="378" rx="8" ry="6" fill="#e0b040" opacity="0.25"/>
+      <circle cx="880" cy="376" r="3" fill="#f0c860" opacity="0.5"/>
+    </svg>
+  </div>
+  <div class="morning-overlay"></div>
+  <div class="morning-content fade-in">
+    <div class="section-eyebrow">Every Single Day</div>
+    <h2 class="section-title">While Amritsar<br>is still <em>asleep.</em></h2>
+    <p class="morning-body">
+      At 5am, our farm comes alive. Milking begins before sunrise. By the time most families wake up, your milk has already been tested, bottled, sealed, and loaded for delivery. This is what fresh actually means.
+    </p>
+  </div>
+</div>
+
+<!-- ============================================================
+  HOW IT WORKS
+============================================================ -->
+<section class="how">
+  <div class="section-eyebrow">The Process</div>
+  <h2 class="section-title">From cow to<br><em>doorstep.</em></h2>
+
+  <div class="steps-grid">
+    <div class="step fade-in">
+      <div class="step-num">01</div>
+      <span class="step-icon">🌅</span>
+      <h3>Dawn Milking</h3>
+      <p>Our indigenous cows are milked at 5am using hygienic milking systems. No stress. No rush. The way it should be.</p>
+    </div>
+    <div class="step fade-in" style="transition-delay:0.1s">
+      <div class="step-num">02</div>
+      <span class="step-icon">🧪</span>
+      <h3>Quality Testing</h3>
+      <p>Every batch is tested for fat content, SNF, and adulteration before a single bottle is filled. We publish our results.</p>
+    </div>
+    <div class="step fade-in" style="transition-delay:0.2s">
+      <div class="step-num">03</div>
+      <span class="step-icon">🫙</span>
+      <h3>Hand Bottled</h3>
+      <p>Filled into glass bottles, sealed tamper-proof, and labelled by hand. Cold-stored until the moment of delivery.</p>
+    </div>
+    <div class="step fade-in" style="transition-delay:0.3s">
+      <div class="step-num">04</div>
+      <span class="step-icon">🚴</span>
+      <h3>Morning Delivery</h3>
+      <p>Delivered in insulated cold carriers to your door — Ranjit Avenue, Green Avenue, DR Enclave, Holy City and beyond.</p>
+    </div>
+    <div class="step fade-in" style="transition-delay:0.4s">
+      <div class="step-num">05</div>
+      <span class="step-icon">🥛</span>
+      <h3>Your Table</h3>
+      <p>Fresh milk — from this morning, from these cows — ready for your family before breakfast. That's the Amaan difference.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+  HEALTH SECTION
+============================================================ -->
+<section class="health" id="health">
+  <div class="health-inner">
+    <div class="health-images fade-in">
+      <!-- Panel 1: Milk drop / glass — tall left panel -->
+      <div class="health-img">
+        <div class="health-illus h-illus-1">
+          <svg viewBox="0 0 240 440" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" preserveAspectRatio="xMidYMid slice">
+            <rect width="240" height="440" fill="#f8f3e8"/>
+            <!-- Subtle grain texture bg -->
+            <rect width="240" height="440" fill="url(#grain)" opacity="0.04"/>
+            <!-- Large milk drop centred -->
+            <path d="M120 80 Q88 130 82 180 Q78 230 120 248 Q162 230 158 180 Q152 130 120 80Z" fill="#fff" stroke="#e8d8b8" stroke-width="1"/>
+            <!-- Inner drop highlight -->
+            <path d="M120 100 Q104 138 100 172 Q98 205 120 218" fill="none" stroke="#f0e8d0" stroke-width="8" stroke-linecap="round" opacity="0.7"/>
+            <!-- Gleam dot -->
+            <circle cx="108" cy="118" r="7" fill="#fff" opacity="0.85"/>
+            <circle cx="114" cy="108" r="3.5" fill="#fff"/>
+            <!-- Ripple rings below drop -->
+            <ellipse cx="120" cy="280" rx="55" ry="12" fill="none" stroke="#d4c8a8" stroke-width="0.8" opacity="0.7"/>
+            <ellipse cx="120" cy="280" rx="75" ry="18" fill="none" stroke="#d4c8a8" stroke-width="0.5" opacity="0.5"/>
+            <ellipse cx="120" cy="280" rx="95" ry="24" fill="none" stroke="#d4c8a8" stroke-width="0.4" opacity="0.35"/>
+            <!-- Label -->
+            <text x="120" y="340" text-anchor="middle" font-family="'Jost',sans-serif" font-size="10" font-weight="300" fill="#9a8a70" letter-spacing="3">PURE A2</text>
+            <line x1="60" y1="350" x2="180" y2="350" stroke="#d4c8a8" stroke-width="0.5"/>
+            <text x="120" y="368" text-anchor="middle" font-family="'Cormorant Garamond',serif" font-size="22" font-weight="300" font-style="italic" fill="#2a4a20">Nothing added.</text>
+          </svg>
+        </div>
+      </div>
+      <!-- Panel 2: Desi cow silhouette in green field -->
+      <div class="health-img">
+        <div class="health-illus h-illus-2">
+          <svg viewBox="0 0 240 220" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" preserveAspectRatio="xMidYMid slice">
+            <rect width="240" height="220" fill="#1a3010"/>
+            <!-- Dawn sky band -->
+            <rect width="240" height="80" fill="#0e1c08"/>
+            <ellipse cx="190" cy="55" rx="100" ry="60" fill="#b87820" opacity="0.2"/>
+            <ellipse cx="190" cy="60" rx="60" ry="38" fill="#d4a040" opacity="0.16"/>
+            <!-- Horizon -->
+            <path d="M0 95 Q60 82 120 88 Q180 80 240 86 L240 220 L0 220Z" fill="#224018"/>
+            <path d="M0 115 Q80 105 160 110 Q200 107 240 112 L240 220 L0 220Z" fill="#2a5020"/>
+            <!-- Crop rows -->
+            <line x1="0" y1="132" x2="240" y2="131" stroke="#305018" stroke-width="1.2" opacity="0.6"/>
+            <line x1="0" y1="145" x2="240" y2="144" stroke="#264010" stroke-width="1" opacity="0.5"/>
+            <line x1="0" y1="157" x2="240" y2="156" stroke="#1e3010" stroke-width="1.2" opacity="0.4"/>
+            <!-- Desi cow silhouette with hump -->
+            <path d="M88 105 Q93 90 106 87 Q120 84 130 87 Q139 82 148 84 Q157 81 160 88 Q165 86 168 92 Q170 97 167 102 Q172 104 172 110 Q167 115 158 112 L155 122 L148 122 L146 111 Q136 113 124 111 L122 122 L115 122 L113 111 Q102 113 95 110 L92 122 L86 122 L84 110 Q82 107 84 103 Q84 108 88 105Z" fill="#0e1808"/>
+            <!-- Head -->
+            <ellipse cx="169" cy="96" rx="12" ry="10" fill="#121008"/>
+            <!-- Horn -->
+            <path d="M173 88 Q181 78 177 74" fill="none" stroke="#121008" stroke-width="2" stroke-linecap="round"/>
+            <!-- Eye -->
+            <circle cx="174" cy="95" r="1.5" fill="#3a5020"/>
+            <!-- Tail -->
+            <path d="M85 108 Q76 112 74 120" fill="none" stroke="#0e1808" stroke-width="2" stroke-linecap="round"/>
+            <!-- Tree -->
+            <rect x="22" y="88" width="4" height="42" fill="#0a1206"/>
+            <ellipse cx="24" cy="82" rx="14" ry="20" fill="#0e1a08"/>
+            <!-- Sun hint -->
+            <circle cx="190" cy="46" r="14" fill="#c89030" opacity="0.25"/>
+            <circle cx="190" cy="46" r="8" fill="#e0a840" opacity="0.2"/>
+          </svg>
+        </div>
+      </div>
+      <!-- Panel 3: Wheat/grain and milk bottle -->
+      <div class="health-img">
+        <div class="health-illus h-illus-3">
+          <svg viewBox="0 0 240 220" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" preserveAspectRatio="xMidYMid slice">
+            <rect width="240" height="220" fill="#f4ede0"/>
+            <!-- Decorative background circle -->
+            <circle cx="120" cy="110" r="88" fill="#ede4d0" opacity="0.6"/>
+            <circle cx="120" cy="110" r="72" fill="#e8dcc8" opacity="0.4"/>
+            <!-- Milk bottle — glass bottle shape -->
+            <path d="M108 140 L108 90 Q108 80 114 75 L114 65 L126 65 L126 75 Q132 80 132 90 L132 140 Q132 148 120 148 Q108 148 108 140Z" fill="#fff" stroke="#d4c8a8" stroke-width="1"/>
+            <!-- Bottle neck -->
+            <rect x="114" y="60" width="12" height="8" rx="2" fill="#e8e0d0" stroke="#d4c8a8" stroke-width="0.7"/>
+            <!-- Milk inside bottle -->
+            <path d="M109 120 L109 140 Q109 147 120 147 Q131 147 131 140 L131 120Z" fill="#fdfaf3"/>
+            <!-- Bottle label band -->
+            <rect x="109" y="100" width="22" height="18" rx="1" fill="#2a4a20" opacity="0.85"/>
+            <text x="120" y="112" text-anchor="middle" font-family="'Jost',sans-serif" font-size="6" fill="#fff" letter-spacing="1" font-weight="300">A2</text>
+            <!-- Wheat stalks left -->
+            <line x1="80" y1="155" x2="82" y2="90" stroke="#b89040" stroke-width="1.2" stroke-linecap="round"/>
+            <ellipse cx="79" cy="118" rx="5" ry="8" fill="#c8a048" transform="rotate(-18,79,118)"/>
+            <ellipse cx="84" cy="106" rx="5" ry="8" fill="#c8a048" transform="rotate(15,84,106)"/>
+            <ellipse cx="82" cy="93" rx="4.5" ry="7" fill="#c8a048"/>
+            <line x1="68" y1="155" x2="70" y2="98" stroke="#b89040" stroke-width="1" stroke-linecap="round"/>
+            <ellipse cx="67" cy="126" rx="4" ry="7" fill="#c0983c" transform="rotate(-20,67,126)"/>
+            <ellipse cx="71" cy="112" rx="4" ry="7" fill="#c0983c" transform="rotate(12,71,112)"/>
+            <ellipse cx="70" cy="100" rx="4" ry="6" fill="#c0983c"/>
+            <!-- Wheat stalks right -->
+            <line x1="160" y1="155" x2="158" y2="90" stroke="#b89040" stroke-width="1.2" stroke-linecap="round"/>
+            <ellipse cx="161" cy="118" rx="5" ry="8" fill="#c8a048" transform="rotate(18,161,118)"/>
+            <ellipse cx="156" cy="106" rx="5" ry="8" fill="#c8a048" transform="rotate(-15,156,106)"/>
+            <ellipse cx="158" cy="93" rx="4.5" ry="7" fill="#c8a048"/>
+            <line x1="172" y1="155" x2="170" y2="98" stroke="#b89040" stroke-width="1" stroke-linecap="round"/>
+            <ellipse cx="173" cy="126" rx="4" ry="7" fill="#c0983c" transform="rotate(20,173,126)"/>
+            <ellipse cx="169" cy="112" rx="4" ry="7" fill="#c0983c" transform="rotate(-12,169,112)"/>
+            <ellipse cx="170" cy="100" rx="4" ry="6" fill="#c0983c"/>
+            <!-- Ground line -->
+            <line x1="40" y1="155" x2="200" y2="155" stroke="#d4c0a0" stroke-width="0.7"/>
+            <!-- Label below -->
+            <text x="120" y="178" text-anchor="middle" font-family="'Jost',sans-serif" font-size="9" font-weight="300" fill="#9a8060" letter-spacing="3">NATURAL</text>
+            <text x="120" y="196" text-anchor="middle" font-family="'Cormorant Garamond',serif" font-size="18" font-weight="300" font-style="italic" fill="#2a4a20">From the earth.</text>
+          </svg>
+        </div>
+      </div>
+    </div>
+    <div class="health-text fade-in">
+      <div class="section-eyebrow">Why A2 Milk</div>
+      <h2 class="section-title">The science of<br><em>better milk.</em></h2>
+      <div class="health-points">
+        <div class="health-point">
+          <div class="hp-icon">🧬</div>
+          <div class="hp-body">
+            <h4>A2 Protein — Easier to Digest</h4>
+            <p>A2 milk contains only the A2 beta-casein protein. Unlike A1 milk (most packaged brands), A2 doesn't produce BCM-7 — the peptide linked to bloating, discomfort, and inflammation.</p>
+          </div>
+        </div>
+        <div class="health-point">
+          <div class="hp-icon">👶</div>
+          <div class="hp-body">
+            <h4>Better for Children</h4>
+            <p>Growing children who struggle with regular milk often find A2 far easier on their system. Closer in composition to human milk — the way milk was always meant to be consumed.</p>
+          </div>
+        </div>
+        <div class="health-point">
+          <div class="hp-icon">🌿</div>
+          <div class="hp-body">
+            <h4>Rich in Natural Nutrients</h4>
+            <p>Our grass-fed desi cows produce milk naturally higher in Omega-3s, CLA, and fat-soluble vitamins. No supplements added — it comes from how the animals live.</p>
+          </div>
+        </div>
+        <div class="health-point">
+          <div class="hp-icon">🔬</div>
+          <div class="hp-body">
+            <h4>Tested Every Batch</h4>
+            <p>We test fat content, SNF, and adulteration before every delivery. Conscious eating means knowing exactly what you're putting in your body — and we make sure you can.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+  QUOTE
+============================================================ -->
+<div class="quote-section">
+  <div class="quote-mark">"</div>
+  <p class="quote-text">You don't just buy milk from us. You know exactly which cow it came from, which morning it was drawn, and who brought it to your door.</p>
+  <div class="quote-attr">— The Amaan Farms Promise</div>
+</div>
+
+<!-- ============================================================
+  CONNECT / MESSAGE
+============================================================ -->
+<section class="connect" id="connect">
+  <div class="connect-inner">
+    <div class="section-eyebrow">Get in Touch</div>
+    <h2 class="section-title">Talk to us.<br><em>We're real people.</em></h2>
+    <p class="connect-subtitle">Sign in to send us a message — whether you want to subscribe, ask a question, or just say hello. Every message is read by a member of our family.</p>
+
+    <!-- AUTH BOX -->
+    <div class="auth-box" id="auth-box">
+      <div class="auth-tabs">
+        <div class="auth-tab active" onclick="switchTab('signin')">Sign In</div>
+        <div class="auth-tab" onclick="switchTab('signup')">Create Account</div>
+      </div>
+
+      <!-- SIGN IN FORM -->
+      <div class="auth-form active" id="form-signin">
+        <div class="form-group">
+          <label>Email Address</label>
+          <input type="email" class="form-input" id="si-email" placeholder="you@example.com">
+        </div>
+        <div class="form-group">
+          <label>Password</label>
+          <input type="password" class="form-input" id="si-pass" placeholder="Your password">
+        </div>
+        <button class="btn-form" onclick="signIn()">Sign In →</button>
+        <p class="auth-note">No account? <a onclick="switchTab('signup')">Create one — it's free.</a></p>
+      </div>
+
+      <!-- SIGN UP FORM -->
+      <div class="auth-form" id="form-signup">
+        <div class="form-row-2">
+          <div class="form-group">
+            <label>First Name</label>
+            <input type="text" class="form-input" id="su-first" placeholder="Rajveer">
+          </div>
+          <div class="form-group">
+            <label>Last Name</label>
+            <input type="text" class="form-input" id="su-last" placeholder="Singh">
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Email Address</label>
+          <input type="email" class="form-input" id="su-email" placeholder="you@example.com">
+        </div>
+        <div class="form-group">
+          <label>Phone Number</label>
+          <input type="tel" class="form-input" id="su-phone" placeholder="98XXXXXXXX">
+        </div>
+        <div class="form-group">
+          <label>Password</label>
+          <input type="password" class="form-input" id="su-pass" placeholder="Choose a password (min 6 chars)">
+        </div>
+        <button class="btn-form" onclick="signUp()">Create Account →</button>
+        <p class="auth-note">Already have an account? <a onclick="switchTab('signin')">Sign in.</a></p>
+      </div>
+    </div>
+
+    <!-- MESSAGE BOX (shown after sign in) -->
+    <div class="message-box" id="message-box">
+      <div class="msg-user-bar">
+        <div class="msg-user-name">
+          <span>Signed in as</span>
+          <span id="display-name" style="font-size:15px;font-weight:400;opacity:1;letter-spacing:0">—</span>
+        </div>
+        <button class="btn-signout" onclick="signOut()">Sign Out</button>
+      </div>
+      <div class="messages-window" id="messages-window">
+        <div class="msg-empty" id="msg-empty">
+          <span class="msg-empty-icon">🐄</span>
+          <span>No messages yet.<br>Say hello — we'd love to hear from you.</span>
+        </div>
+      </div>
+      <div class="msg-input-area">
+        <textarea class="msg-input" id="msg-input" placeholder="Ask us anything — subscriptions, delivery areas, the farm…" rows="1" onkeydown="msgKeydown(event)" oninput="autoResize(this)"></textarea>
+        <button class="btn-send" onclick="sendMessage()">Send</button>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============================================================
+  FOOTER
+============================================================ -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="logo">Amaan <em>Farms</em></div>
+      <p>Farm-fresh A2 milk delivered to your door every morning. Near Amritsar International Airport, Punjab.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Navigate</h4>
+      <ul>
+        <li><a href="#about">Our Story</a></li>
+        <li><a href="#values">Our Values</a></li>
+        <li><a href="#health">A2 Milk</a></li>
+        <li><a href="#connect">Get in Touch</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 Amaan Farms, Amritsar. All rights reserved.</span>
+    <div class="footer-badge">🐄 Desi Breeds · Pure A2 · No Adulterants</div>
+  </div>
+</footer>
+
+<!-- ============================================================
+  SCRIPTS
+============================================================ -->
+<script>
+// ================================================================
+// NAV SCROLL
+// ================================================================
+window.addEventListener('scroll', () => {
+  document.getElementById('main-nav').classList.toggle('scrolled', window.scrollY > 60);
+});
+
+// ================================================================
+// SCROLL ANIMATIONS
+// ================================================================
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      observer.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.12 });
+
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+// ================================================================
+// AUTH — localStorage-based
+// ================================================================
+let currentUser = null;
+
+function getUsers() {
+  return JSON.parse(localStorage.getItem('af_site_users') || '{}');
+}
+
+function saveUsers(users) {
+  localStorage.setItem('af_site_users', JSON.stringify(users));
+}
+
+function getMessages(email) {
+  const all = JSON.parse(localStorage.getItem('af_site_msgs') || '{}');
+  return all[email] || [];
+}
+
+function saveMessages(email, msgs) {
+  const all = JSON.parse(localStorage.getItem('af_site_msgs') || '{}');
+  all[email] = msgs;
+  localStorage.setItem('af_site_msgs', JSON.stringify(all));
+}
+
+// Check existing session
+(function() {
+  const saved = localStorage.getItem('af_session');
+  if (saved) {
+    try {
+      currentUser = JSON.parse(saved);
+      showMessaging();
+    } catch(e) {}
+  }
+})();
+
+function switchTab(tab) {
+  document.querySelectorAll('.auth-tab').forEach((t,i) => {
+    t.classList.toggle('active', (tab==='signin' && i===0) || (tab==='signup' && i===1));
+  });
+  document.getElementById('form-signin').classList.toggle('active', tab==='signin');
+  document.getElementById('form-signup').classList.toggle('active', tab==='signup');
+}
+
+function signIn() {
+  const email = document.getElementById('si-email').value.trim().toLowerCase();
+  const pass  = document.getElementById('si-pass').value;
+  if (!email || !pass) { shake('auth-box'); return; }
+
+  const users = getUsers();
+  if (!users[email]) {
+    alert('No account found with this email. Please create one.');
+    return;
+  }
+  if (users[email].password !== btoa(pass)) {
+    alert('Incorrect password. Please try again.');
+    return;
+  }
+
+  currentUser = { email, name: users[email].name };
+  localStorage.setItem('af_session', JSON.stringify(currentUser));
+  showMessaging();
+}
+
+function signUp() {
+  const first = document.getElementById('su-first').value.trim();
+  const last  = document.getElementById('su-last').value.trim();
+  const email = document.getElementById('su-email').value.trim().toLowerCase();
+  const phone = document.getElementById('su-phone').value.trim();
+  const pass  = document.getElementById('su-pass').value;
+
+  if (!first || !email || !pass) { shake('auth-box'); return; }
+  if (pass.length < 6) { alert('Password must be at least 6 characters.'); return; }
+
+  const users = getUsers();
+  if (users[email]) { alert('An account with this email already exists. Please sign in.'); return; }
+
+  users[email] = { name: first + (last ? ' ' + last : ''), phone, password: btoa(pass), joinedAt: Date.now() };
+  saveUsers(users);
+
+  // Auto-reply welcome message
+  const welcome = [
+    {
+      from: 'farm',
+      text: `Welcome to Amaan Farms, ${first}! 🐄 We're so glad you're here. Feel free to ask us anything — subscription plans, delivery areas, the farm, or just say hello. We read every message personally.`,
+      time: Date.now()
+    }
+  ];
+  saveMessages(email, welcome);
+
+  currentUser = { email, name: users[email].name };
+  localStorage.setItem('af_session', JSON.stringify(currentUser));
+  showMessaging();
+}
+
+function signOut() {
+  currentUser = null;
+  localStorage.removeItem('af_session');
+  document.getElementById('auth-box').style.display = 'block';
+  document.getElementById('message-box').classList.remove('active');
+  switchTab('signin');
+  document.getElementById('si-email').value = '';
+  document.getElementById('si-pass').value = '';
+}
+
+function showMessaging() {
+  document.getElementById('auth-box').style.display = 'none';
+  const mb = document.getElementById('message-box');
+  mb.classList.add('active');
+  document.getElementById('display-name').textContent = currentUser.name;
+  renderMessages();
+}
+
+// ================================================================
+// MESSAGING
+// ================================================================
+function renderMessages() {
+  const window_ = document.getElementById('messages-window');
+  const msgs = getMessages(currentUser.email);
+  const empty = document.getElementById('msg-empty');
+
+  // clear non-empty children
+  Array.from(window_.children).forEach(c => { if (c !== empty) c.remove(); });
+
+  if (msgs.length === 0) {
+    empty.style.display = 'flex';
+    return;
+  }
+
+  empty.style.display = 'none';
+
+  msgs.forEach(m => {
+    const div = document.createElement('div');
+    div.className = 'msg-bubble ' + (m.from === 'user' ? 'sent' : 'received');
+    const time = new Date(m.time).toLocaleTimeString('en-IN', { hour:'2-digit', minute:'2-digit' });
+    const date = new Date(m.time).toLocaleDateString('en-IN', { day:'numeric', month:'short' });
+    div.innerHTML = `<div>${escHtml(m.text)}</div><div class="msg-meta">${m.from === 'user' ? 'You' : 'Amaan Farms'} · ${date}, ${time}</div>`;
+    window_.appendChild(div);
+  });
+
+  window_.scrollTop = window_.scrollHeight;
+}
+
+function sendMessage() {
+  const input = document.getElementById('msg-input');
+  const text = input.value.trim();
+  if (!text) return;
+
+  const msgs = getMessages(currentUser.email);
+  msgs.push({ from: 'user', text, time: Date.now() });
+
+  // Smart auto-reply
+  const reply = getAutoReply(text.toLowerCase());
+  setTimeout(() => {
+    msgs.push({ from: 'farm', text: reply, time: Date.now() + 100 });
+    saveMessages(currentUser.email, msgs);
+    renderMessages();
+  }, 900);
+
+  saveMessages(currentUser.email, msgs);
+  input.value = '';
+  input.style.height = 'auto';
+  renderMessages();
+}
+
+function getAutoReply(text) {
+  if (text.includes('price') || text.includes('cost') || text.includes('₹') || text.includes('rate'))
+    return 'Our A2 milk is priced at ₹85 per litre. We offer flexible daily quantities — 0.5L, 1L, 2L or more. Monthly subscriptions are prepaid. Would you like to know about our subscription plans?';
+  if (text.includes('subscri') || text.includes('plan') || text.includes('monthly'))
+    return 'We offer monthly subscriptions with daily doorstep delivery. You choose your quantity, we handle the rest. To get started, just let us know your address and preferred daily quantity and we\'ll set you up! 🥛';
+  if (text.includes('deliver') || text.includes('area') || text.includes('where'))
+    return 'We currently deliver to Ranjit Avenue, Green Avenue, DR Enclave, Holy City, and Airport Road area in Amritsar. If you\'re nearby, there\'s a good chance we can reach you — share your area and we\'ll confirm!';
+  if (text.includes('a2') || text.includes('desi') || text.includes('breed') || text.includes('cow'))
+    return 'Our milk comes from indigenous desi breeds — Sahiwal and Gir cows — who naturally produce A2 beta-casein protein. This is easier to digest than A1 milk from hybrid breeds, and closer to what our bodies were designed for. Any specific questions about A2 milk?';
+  if (text.includes('trial') || text.includes('sample') || text.includes('try'))
+    return 'We love this! We offer a free trial bottle so you can taste the difference before committing to a subscription. Share your address and a convenient time and we\'ll arrange it. 🐄';
+  if (text.includes('fresh') || text.includes('quality') || text.includes('test'))
+    return 'Every single batch is tested for fat content, SNF, and adulteration before it leaves the farm. Milk is bottled the same morning it\'s milked and delivered cold. We take quality seriously — it\'s the whole point of what we do.';
+  if (text.includes('hello') || text.includes('hi') || text.includes('hey') || text.includes('namaste'))
+    return 'Hello! Welcome to Amaan Farms 🌿 It\'s so lovely to have you here. How can we help you today? Whether it\'s about our milk, subscriptions, or the farm — we\'re all ears.';
+  if (text.includes('thank'))
+    return 'It means the world to us — genuinely. Thank you for being here and for caring about where your food comes from. That\'s exactly why we started Amaan Farms. 🐄';
+  if (text.includes('ghee') || text.includes('paneer') || text.includes('chaas'))
+    return 'We\'re working on it! A2 ghee and other products are in our plans as we grow. For now, we\'re focused on perfecting our fresh milk delivery. Stay connected — you\'ll be among the first to know when new products launch. 🌟';
+  return 'Thank you for reaching out! We\'ve received your message and a member of our family will get back to you shortly. In the meantime, feel free to ask us anything else. 🐄';
+}
+
+function msgKeydown(e) {
+  if (e.key === 'Enter' && !e.shiftKey) {
+    e.preventDefault();
+    sendMessage();
+  }
+}
+
+function autoResize(el) {
+  el.style.height = 'auto';
+  el.style.height = Math.min(el.scrollHeight, 100) + 'px';
+}
+
+function escHtml(str) {
+  return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/\n/g,'<br>');
+}
+
+// ================================================================
+// SHAKE ANIMATION
+// ================================================================
+function shake(id) {
+  const el = document.getElementById(id);
+  el.style.animation = 'shake 0.4s ease';
+  el.addEventListener('animationend', () => el.style.animation = '', { once: true });
+}
+
+const shakeStyle = document.createElement('style');
+shakeStyle.textContent = `
+@keyframes shake {
+  0%,100%{transform:translateX(0)}
+  20%{transform:translateX(-8px)}
+  40%{transform:translateX(8px)}
+  60%{transform:translateX(-5px)}
+  80%{transform:translateX(5px)}
+}`;
+document.head.appendChild(shakeStyle);
+</script>
+</body>
+</html>
